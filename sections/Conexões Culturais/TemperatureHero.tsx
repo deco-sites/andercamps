@@ -1,3 +1,5 @@
+import type { ImageWidget } from "apps/admin/widgets.ts";
+import Image from "apps/website/components/Image.tsx";
 import weather from "apps/weather/loaders/temperature.ts";
 
 // Definindo regiões e suas latitudes e longitudes correspondentes
@@ -49,6 +51,14 @@ const regionCoordinates: { [key: string]: { lat: number; long: number } } = {
 };
 
 interface Props {
+  /**
+   * @format html
+   */
+  title: string;
+  description: string;
+  image?: ImageWidget;
+  placement: "left" | "right";
+
   /** @title Estado */
   /** @description Coloque o estado de onde você deseja obter a temperatura */
   region?: string;
@@ -56,29 +66,39 @@ interface Props {
   /** @title Indicador de Localidade */
   /** @description Coloque a latitude e longitude da região desejada (Opcional) */
   latLong?: { lat?: number; long?: number };
+
+  temperature?: { celsius: number };
 }
 
+const PLACEMENT = {
+  left: "flex-col text-left lg:flex-row-reverse",
+  right: "flex-col text-left lg:flex-row",
+};
+
 export const loader = async (props: Props, _req: Request) => {
+  let temperature = null;
   // Se a região for especificada e existir nas coordenadas definidas, usamos essas coordenadas
   const latLong = props.region && regionCoordinates[props.region]
     ? regionCoordinates[props.region]
     // Caso contrário, usamos as coordenadas fornecidas ou padrão (0, 0) se não houverem coordenadas
     : props.latLong ?? { lat: 0, long: 0 };
 
-  const temperature = await weather(latLong, _req);
+  temperature = await weather(latLong, _req);
   return { ...props, temperature };
 };
 
-const TemperatureHero = (
-  { temperature, region }: {
-    temperature: { celsius: number } | null;
-    region?: string;
-  },
-) => {
+const TemperatureHero = ({
+  temperature,
+  region,
+  title,
+  description,
+  image,
+  placement,
+}: Props) => {
   let classTemperature;
   let temperatureMessage;
 
-  if (temperature !== null) {
+  if (temperature && temperature.celsius !== null) {
     if (temperature.celsius < 15) { // Frio 🥶
       classTemperature = "bg-blue-500 hover:bg-blue-600";
     } else if (temperature.celsius > 30) { // Quente 🥵
@@ -93,9 +113,50 @@ const TemperatureHero = (
     : temperatureMessage = `Está fazendo ${temperature?.celsius}º`;
 
   return (
-    <button className={`rounded-full p-2 text-white ${classTemperature}`}>
-      {temperatureMessage}
-    </button>
+    <div>
+      <div class="mx-auto flex flex-col items-center gap-8">
+        <div
+          class={`flex lg:w-full xl:container xl:mx-auto py-20 mx-5 md:mx-10 z-10 ${
+            image
+              ? PLACEMENT[placement]
+              : "flex-col items-center justify-center text-center"
+          } lg:py-36 gap-5 lg:p-3 items-center`}
+        >
+          {image && (
+            <Image
+              width={640}
+              class="w-full lg:w-1/2 object-fit rounded-lg"
+              sizes="(max-width: 640px) 100vw, 30vw"
+              src={image}
+              alt={image}
+              decoding="async"
+              loading="lazy"
+            />
+          )}
+          <div
+            class={`mx-6 lg:mx-auto lg:w-full space-y-4 gap-4 ${
+              image
+                ? "lg:w-1/2 lg:max-w-xl"
+                : "flex flex-col items-center justify-center lg:max-w-3xl"
+            }`}
+          >
+            <div
+              class="inline-block text-[80px] leading-[100%] font-medium tracking-[-2.4px]"
+              dangerouslySetInnerHTML={{ __html: title }}
+            >
+            </div>
+            <p class="text-zinc-400 text-[16px] md:text-[18px] leading-[150%]">
+              {description}
+            </p>
+            <button
+              className={`rounded-full p-2 text-white transition-transform duration-300 transform hover:-translate-y-1 ${classTemperature}`}
+            >
+              {temperatureMessage}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

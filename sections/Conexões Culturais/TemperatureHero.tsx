@@ -67,6 +67,7 @@ interface Props {
   /** @description Coloque a latitude e longitude da região desejada (Opcional) */
   latLong?: { lat?: number; long?: number };
 
+  /** @hide temperature */
   temperature?: { celsius: number };
 }
 

@@ -17,13 +17,14 @@ import { Buttons, Logo } from "../../components/header/Header.tsx";
 
 // Make it sure to render it on the server only. DO NOT render it on an island
 function Navbar(
-  { items, searchbar, logo, buttons, logoPosition = "left", device }: {
+  { items, searchbar, logo, buttons, logoPosition = "left", device, total }: {
     items: SiteNavigationElement[];
     searchbar?: SearchbarProps;
     logo?: Logo;
     buttons?: Buttons;
     logoPosition?: "left" | "center";
     device: "mobile" | "desktop" | "tablet";
+    total?: { total: number };
   },
 ) {
   const platform = usePlatform();
@@ -60,6 +61,14 @@ function Navbar(
           {platform === "linx" && <CartButtonLinx />}
           {platform === "shopify" && <CartButtonShopify />}
           {platform === "nuvemshop" && <CartButtonNuvemshop />}
+
+          {total &&
+            (
+              <div>
+                <Icon id="Friends" size={32} />
+                <span id="total">{total.total}</span>
+              </div>
+            )}
         </div>
       </div>
     );
@@ -140,6 +149,14 @@ function Navbar(
             {platform === "nuvemshop" && <CartButtonNuvemshop />}
           </div>
         )}
+
+        {total &&
+          (
+            <div>
+              <Icon id="Friends" size={32} />
+              <span id="total">{total.total}</span>
+            </div>
+          )}
       </div>
     </div>
   );

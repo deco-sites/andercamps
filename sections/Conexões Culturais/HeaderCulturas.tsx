@@ -8,6 +8,7 @@ import type { SectionProps } from "deco/types.ts";
 import Alert from "deco-sites/andercamps/components/header/Alert.tsx";
 import Navbar from "deco-sites/andercamps/components/header/Navbar.tsx";
 import { headerHeight } from "deco-sites/andercamps/components/header/constants.ts";
+import type { Resultado } from "deco-sites/andercamps/loaders/totalVotes.ts";
 
 export interface Logo {
   src: ImageWidget;
@@ -40,6 +41,9 @@ export interface Props {
   logoPosition?: "left" | "center";
 
   buttons?: Buttons;
+
+  /** @title Resultado*/
+  total: Resultado;
 }
 
 function Header({
@@ -63,6 +67,7 @@ function Header({
   logoPosition = "center",
   buttons,
   device,
+  total = { total: 0 },
 }: SectionProps<typeof loader>) {
   const platform = usePlatform();
   const items = navItems ?? [];
@@ -84,6 +89,7 @@ function Header({
               logo={logo}
               logoPosition={logoPosition}
               buttons={buttons}
+              total={total}
             />
           </div>
         </Drawers>

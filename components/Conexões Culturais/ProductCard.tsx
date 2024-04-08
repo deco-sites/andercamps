@@ -1,35 +1,12 @@
 import { Products } from "deco-sites/andercamps/sections/Conexões Culturais/HorizontalProductCard.tsx";
-import Image from "apps/website/components/Image.tsx";
 import Votes from "deco-sites/andercamps/islands/votes.tsx";
+import HorizontalSkeleton from "deco-sites/andercamps/components/Conex%C3%B5es%20Culturais/HorizontalSkeleton.tsx";
 
 export function LoadingFallback() {
   return (
     <div class="container mx-5 md:mx-10 xl:mx-auto py-20 ">
       <ul class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {[...Array(3)].map((_, index) => (
-          <li
-            key={index}
-            className="flex flex-row max-w-xl mx-auto bg-white shadow-md rounded-lg overflow-hidden mb-4 col-span-1 min-w-full"
-          >
-            <figure className="w-1/3">
-              <div className="skeleton w-full h-48"></div>
-            </figure>
-            <div className="flex flex-col justify-between p-4 w-2/3">
-              <div>
-                <div className="skeleton h-6 w-4/6 md:w-full mb-2"></div>
-                <div className="skeleton h-4 w-3/6 md:w-full"></div>
-              </div>
-              <div className="mt-3 flex items-center justify-between">
-                <button
-                  className="skeleton px-4 py-2 bg-gray-200 text-white rounded cursor-not-allowed"
-                  disabled
-                >
-                  Carregando...
-                </button>
-              </div>
-            </div>
-          </li>
-        ))}
+        {[...Array(3)].map((_, index) => <HorizontalSkeleton />)}
       </ul>
     </div>
   );

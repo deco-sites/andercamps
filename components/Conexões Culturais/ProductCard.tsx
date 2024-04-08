@@ -1,49 +1,75 @@
+import { Products } from "deco-sites/andercamps/sections/Conexões Culturais/HorizontalProductCard.tsx";
 import Image from "apps/website/components/Image.tsx";
-import { Card } from "deco-sites/andercamps/sections/Conexões Culturais/HorizontalProductCard.tsx";
+import Votes from "deco-sites/andercamps/islands/votes.tsx";
 
-export default function ProductCard(props: { item: Card }) {
-  const { nome, description, price, image } = props.item;
-
+export function LoadingFallback() {
   return (
-    <div className="max-w-xl mx-auto bg-white shadow-md rounded-lg overflow-hidden md:flex">
-      <div className="md:w-1/3">
-        {image
-          ? (
-            <Image
-              width={640}
-              className="object-cover w-full h-full"
-              sizes="(max-width: 350px)"
-              src={image}
-              alt={image}
-              decoding="async"
-              loading="lazy"
-            />
-          )
-          : (
-            <img
-              className="object-cover w-full h-full"
-              src="https://via.placeholder.com/300x200"
-              alt="Product Image"
-            />
-          )}
-      </div>
-      <div className="md:w-2/3 p-4">
-        <h2 className="text-gray-800 text-2xl font-semibold">{nome}</h2>
-        {description && <p className="mt-2 text-gray-600">{description}</p>}
-        <div className="mt-3 flex items-center justify-between">
-          {price && <span className="text-gray-800 font-bold">R$: {price}
-          </span>}
-          <button
-            className={`px-4 py-2 ${
-              price
-                ? "bg-blue-500 hover:bg-blue-600"
-                : "bg-gray-300 cursor-not-allowed"
-            } text-white rounded`}
+    <div class="container mx-5 md:mx-10 xl:mx-auto py-20 ">
+      <ul class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {[...Array(3)].map((_, index) => (
+          <li
+            key={index}
+            className="flex flex-row max-w-xl mx-auto bg-white shadow-md rounded-lg overflow-hidden mb-4 col-span-1 min-w-full"
           >
-            {price ? "Comprar" : "Indisponível"}
-          </button>
-        </div>
-      </div>
+            <figure className="w-1/3">
+              <div className="skeleton w-full h-48"></div>
+            </figure>
+            <div className="flex flex-col justify-between p-4 w-2/3">
+              <div>
+                <div className="skeleton h-6 w-4/6 md:w-full mb-2"></div>
+                <div className="skeleton h-4 w-3/6 md:w-full"></div>
+              </div>
+              <div className="mt-3 flex items-center justify-between">
+                <button
+                  className="skeleton px-4 py-2 bg-gray-200 text-white rounded cursor-not-allowed"
+                  disabled
+                >
+                  Carregando...
+                </button>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
+  );
+}
+
+export default function ProductCard({ items }: Products) {
+  return (
+    <>
+      {items &&
+        items.map((item, index) => (
+          <li
+            key={index}
+            className="flex flex-row max-w-xl mx-auto bg-white shadow-md rounded-lg overflow-hidden mb-4 col-span-1"
+          >
+            <figure className="w-1/3">
+              <img
+                className="object-cover w-full h-full"
+                src={item.image?.[0].url}
+                alt={item.alternateName}
+              />
+            </figure>
+            <div className="flex flex-col justify-between p-4 w-2/3">
+              <div>
+                <h2 className="text-gray-800 text-xl font-semibold">
+                  {item.name}
+                </h2>
+                <p className="mt-2 text-gray-600">{item.description}</p>
+              </div>
+              <div className="mt-3 flex items-center justify-between">
+                <a
+                  href={item.url}
+                  className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+                >
+                  Comprar
+                </a>
+                <Votes productId={item.productID} />
+              </div>
+            </div>
+          </li>
+        ))}
+    </>
   );
 }

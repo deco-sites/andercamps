@@ -64,7 +64,7 @@ function Navbar(
 
           {total &&
             (
-              <div>
+              <div className="flex items-center justify-between gap-3">
                 <Icon id="Friends" size={32} />
                 <span id="total">{total.total}</span>
               </div>
@@ -152,7 +152,7 @@ function Navbar(
 
         {total &&
           (
-            <div>
+            <div className="flex items-center justify-between gap-3">
               <Icon id="Friends" size={32} />
               <span id="total">{total.total}</span>
             </div>

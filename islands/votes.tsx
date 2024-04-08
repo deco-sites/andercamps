@@ -25,12 +25,16 @@ export default function Votes({ productId }: Props) {
 
   return (
     <>
-      <button onClick={handleVotes} disabled={voted.value}>
+      <button
+        className="flex items-center justify-between gap-3"
+        onClick={handleVotes}
+        disabled={voted.value}
+      >
         {voted.value
           ? <Icons id="MoodCheck" size={32} />
           : <Icons id="MoodSmile" size={32} />}
+        <span>{voteNumber}</span>
       </button>
-      <span>{voteNumber}</span>
     </>
   );
 }

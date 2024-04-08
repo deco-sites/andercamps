@@ -11,12 +11,16 @@ Desenvolvido com Deco.cx, Deno, Tailwind e Fresh.
 - [x] #02 - Creating My First deco.site
 - [x] #03 - The Basic Building Blocks: Sections and Loaders
 - [x] #04 - From Zero To Hero: All You Need to Scale in One Tool
-- [ ] #05 - Mastering Sections: reusable UI components
-- [ ] #06 - Mastering Tailwind: Never Write CSS Again
-- [ ] #07 - Mastering Islands: (The least) Client-Side JavaScript is the Best
-- [ ] #08 - Mastering Loaders: Connecting your Site to the Web
-- [ ] #09 - Advanced Loaders and Submitting Data with Actions
+- [x] #05 - Mastering Sections: reusable UI components
+- [x] #06 - Mastering Tailwind: Never Write CSS Again
+- [x] #07 - Mastering Islands: (The least) Client-Side JavaScript is the Best
+- [x] #08 - Mastering Loaders: Connecting your Site to the Web
+- [x] #09 - Advanced Loaders and Submitting Data with Actions
 - [ ] #10 - Mastering Routes, Matchers and Imports: This is the Way (of the Web)
+- [ ] #11 - Massive Gains: Performance Debugging and Optimizing
+- [ ] #12 - Lab Metrics vs User Metrics, How and When to Measure Performance
+- [ ] #13 - Optimize all the things! Performance tips for Loaders, Islands, Fonts and Images.
+- [ ] #14 - Goodbye client-side templates - the Wonderful World of Server-Side Partial Rendering;
 
 ---
 

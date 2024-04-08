@@ -1,6 +1,5 @@
 import { Props } from "deco-sites/andercamps/sections/Conex%C3%B5es%20Culturais/PartialImageGallery.tsx";
 import { useSignal } from "@preact/signals";
-import Image from "apps/website/components/Image.tsx";
 
 export default function PartialGalleryButton({ images }: Props) {
   const count = useSignal(3);
@@ -11,15 +10,29 @@ export default function PartialGalleryButton({ images }: Props) {
 
   return (
     <>
-      <div className="grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {images &&
           images.slice(0, count.value).map((image, index) => (
-            <Image key={index} src={image} width={300} height={300} />
+            <img
+              key={index}
+              src={image}
+              alt="Imagem"
+              class="w-full h-auto rounded-lg"
+            />
           ))}
       </div>
 
       {images && images.length > count.value &&
-        <button onClick={handleGallery}>mostrar mais</button>}
+        (
+          <div class="flex justify-center items-center">
+            <button
+              onClick={handleGallery}
+              class="rounded-full bg-secondary p-2 transition-transform duration-300 transform hover:translate-y-1"
+            >
+              Mostrar mais
+            </button>
+          </div>
+        )}
     </>
   );
 }

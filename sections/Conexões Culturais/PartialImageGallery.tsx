@@ -21,8 +21,8 @@ export default function PartialImageGallery({ images }: Props) {
   }
 
   return (
-    <>
+    <div class="container mx-5 md:mx-10 xl:mx-auto py-20 ">
       <PartialGalleryButton images={images} />
-    </>
+    </div>
   );
 }

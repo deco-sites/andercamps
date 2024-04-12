@@ -1,3 +1,4 @@
+import { SectionProps } from "deco/mod.ts";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
 import weather from "apps/weather/loaders/temperature.ts";
@@ -66,9 +67,6 @@ interface Props {
   /** @title Indicador de Localidade */
   /** @description Coloque a latitude e longitude da região desejada (Opcional) */
   latLong?: { lat?: number; long?: number };
-
-  /** @hide temperature */
-  temperature?: { celsius: number };
 }
 
 const PLACEMENT = {
@@ -95,7 +93,7 @@ const TemperatureHero = ({
   description,
   image,
   placement,
-}: Props) => {
+}: SectionProps<typeof loader>) => {
   let classTemperature;
   let temperatureMessage;
 

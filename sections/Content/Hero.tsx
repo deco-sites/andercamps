@@ -32,20 +32,20 @@ export default function HeroFlats({
   cta,
 }: Props) {
   return (
-    <div>
-      <div class="mx-auto flex flex-col items-center gap-8">
+    <div class="container mx-auto">
+      <div class="flex flex-col items-center gap-8">
         <div
-          class={`flex lg:w-full xl:container xl:mx-auto py-20 mx-5 md:mx-10 z-10 ${
+          class={`flex lg:w-full py-5 sm:py-20 z-10 ${
             image
               ? PLACEMENT[placement]
               : "flex-col items-center justify-center text-center"
-          } lg:py-36 gap-5 sm:p-3 items-center`}
+          } gap-5 items-center`}
         >
           {image && (
             <Image
               width={640}
-              class="w-full lg:w-1/2 object-fit rounded-lg"
-              sizes="(max-width: 640px) 100vw, 30vw"
+              class="w-full md:w-1/2 object-fit rounded-lg"
+              sizes="(max-width: 380px;) 100vw, 30vw"
               src={image}
               alt={image}
               decoding="async"
@@ -53,7 +53,7 @@ export default function HeroFlats({
             />
           )}
           <div
-            class={`mx-6 lg:mx-auto lg:w-full space-y-4 gap-4 ${
+            class={`lg:w-full space-y-4 gap-4 ${
               image
                 ? "lg:w-1/2 lg:max-w-xl"
                 : "flex flex-col items-center justify-center lg:max-w-3xl"

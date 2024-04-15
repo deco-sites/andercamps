@@ -101,7 +101,7 @@ const TemperatureHero = ({
     if (temperature.celsius < 15) { // Frio 🥶
       classTemperature = "bg-blue-500 hover:bg-blue-600";
     } else if (temperature.celsius > 30) { // Quente 🥵
-      classTemperature = "bg-red-500 hover:bg-red-600";
+      classTemperature = "bg-error hover:bg-red-600";
     } else { // Temperatura Normal;
       classTemperature = "bg-green-500 hover:bg-green-600";
     }
@@ -112,20 +112,20 @@ const TemperatureHero = ({
     : temperatureMessage = `Está fazendo ${temperature?.celsius}º`;
 
   return (
-    <div>
-      <div class="mx-auto flex flex-col items-center gap-8">
+    <div class="container mx-auto py-12 sm:py-20">
+      <div class="flex flex-col items-center gap-8">
         <div
-          class={`flex lg:w-full xl:container xl:mx-auto py-20 mx-5 md:mx-10 z-10 ${
+          class={`flex lg:w-full z-10 ${
             image
               ? PLACEMENT[placement]
               : "flex-col items-center justify-center text-center"
-          } lg:py-36 gap-5 lg:p-3 items-center`}
+          } gap-5 items-center`}
         >
           {image && (
             <Image
               width={640}
               class="w-full lg:w-1/2 object-fit rounded-lg"
-              sizes="(max-width: 640px) 100vw, 30vw"
+              sizes="(max-width: 640px) 100vw, auto"
               src={image}
               alt={image}
               decoding="async"
@@ -133,7 +133,7 @@ const TemperatureHero = ({
             />
           )}
           <div
-            class={`mx-6 lg:mx-auto lg:w-full space-y-4 gap-4 ${
+            class={`lg:mx-auto lg:w-full space-y-4 ${
               image
                 ? "lg:w-1/2 lg:max-w-xl"
                 : "flex flex-col items-center justify-center lg:max-w-3xl"

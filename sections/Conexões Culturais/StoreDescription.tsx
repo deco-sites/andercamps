@@ -11,8 +11,8 @@ export interface Props {
 
 export default function CupomList(props: Props) {
   return (
-    <div class="xl:container">
-      <div class="flex flex-col gap-4 p-4">
+    <div class="container mx-auto">
+      <div class="flex flex-col gap-4 py-4">
         <h2 class="text-2xl font-semibold">{props.title}</h2>
         {props.description && (
           <p class="text-[16px] md:text-[18px] leading-[150%]">

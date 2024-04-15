@@ -24,12 +24,12 @@ export default function PartialGalleryButton({ images }: Props) {
 
       {images && images.length > count.value &&
         (
-          <div class="flex justify-center items-center">
+          <div class="flex justify-center items-center mt-6">
             <button
               onClick={handleGallery}
-              class="rounded-full bg-secondary p-2 transition-transform duration-300 transform hover:translate-y-1"
+              class="px-4 py-2 bg-primary hover:bg-secondary text-white rounded transition-transform duration-300 transform hover:translate-y-1"
             >
-              Mostrar mais
+              Carregar Mais
             </button>
           </div>
         )}

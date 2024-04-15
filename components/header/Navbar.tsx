@@ -14,6 +14,7 @@ import Image from "apps/website/components/Image.tsx";
 import NavItem from "./NavItem.tsx";
 import { navbarHeight } from "./constants.ts";
 import { Buttons, Logo } from "../../components/header/Header.tsx";
+import VotesHeader from "deco-sites/andercamps/islands/Header/VotesHeader.tsx";
 
 // Make it sure to render it on the server only. DO NOT render it on an island
 function Navbar(
@@ -62,13 +63,7 @@ function Navbar(
           {platform === "shopify" && <CartButtonShopify />}
           {platform === "nuvemshop" && <CartButtonNuvemshop />}
 
-          {total &&
-            (
-              <div className="flex items-center justify-between gap-3">
-                <Icon id="Friends" size={32} />
-                <span id="total">{total.total}</span>
-              </div>
-            )}
+          <VotesHeader totalVotes={total?.total} />
         </div>
       </div>
     );
@@ -150,13 +145,7 @@ function Navbar(
           </div>
         )}
 
-        {total &&
-          (
-            <div className="flex items-center justify-between gap-3">
-              <Icon id="Friends" size={32} />
-              <span id="total">{total.total}</span>
-            </div>
-          )}
+        <VotesHeader totalVotes={total?.total} />
       </div>
     </div>
   );

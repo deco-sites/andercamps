@@ -13,6 +13,7 @@ import * as $$$6 from "./loaders/productVotes.ts";
 import * as $$$2 from "./loaders/Quotes/quotables.ts";
 import * as $$$3 from "./loaders/Quotes/zenquotes.ts";
 import * as $$$7 from "./loaders/totalVotes.ts";
+import * as $$$$$$$0 from "./matchers/platform.ts";
 import * as $$$$$$0 from "./sections/Animation/Animation.tsx";
 import * as $$$$$$1 from "./sections/Cards/IconCardsCarousel.tsx";
 import * as $$$$$$2 from "./sections/Cards/IconCardsCarouselWithImage.tsx";
@@ -142,6 +143,9 @@ const manifest = {
     "deco-sites/andercamps/sections/Social/InstagramPosts.tsx": $$$$$$51,
     "deco-sites/andercamps/sections/Social/WhatsApp.tsx": $$$$$$52,
     "deco-sites/andercamps/sections/Theme/Theme.tsx": $$$$$$53,
+  },
+  "matchers": {
+    "deco-sites/andercamps/matchers/platform.ts": $$$$$$$0,
   },
   "actions": {
     "deco-sites/andercamps/actions/PostVotes.ts": $$$$$$$$$0,

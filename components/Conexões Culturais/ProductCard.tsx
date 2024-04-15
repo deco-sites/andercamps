@@ -27,10 +27,12 @@ export default function ProductCard({ items }: Products) {
             </figure>
             <div className="flex flex-col justify-between p-4 w-2/3">
               <div>
-                <h2 className="text-gray-800 text-xl font-semibold">
+                <h2 className="text-gray-800 text-xl font-semibold line-clamp-2">
                   {item.name}
                 </h2>
-                <p className="mt-2 text-gray-600">{item.description}</p>
+                <p className="mt-2 text-gray-600 line-clamp-2">
+                  {item.description}
+                </p>
               </div>
               <div className="mt-3 flex items-center justify-between">
                 <a

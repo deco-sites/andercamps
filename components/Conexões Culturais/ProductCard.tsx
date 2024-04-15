@@ -3,8 +3,6 @@ import Votes from "deco-sites/andercamps/islands/votes.tsx";
 import Image from "apps/website/components/Image.tsx";
 
 export default function ProductCard({ items }: Products) {
-  console.log(items);
-
   return (
     <>
       {items &&

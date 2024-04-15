@@ -5,6 +5,8 @@
 import * as $$$$$$$$$0 from "./actions/PostVotes.ts";
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
+import * as $$$$$$$$0 from "./flags/multivariate/Messages.ts";
+import * as $$$$$$$$1 from "./flags/multivariate/ProductCardFlag.ts";
 import * as $$$4 from "./loaders/availableIcons.ts";
 import * as $$$5 from "./loaders/icons.ts";
 import * as $$$0 from "./loaders/Layouts/ProductCard.tsx";
@@ -146,6 +148,10 @@ const manifest = {
   },
   "matchers": {
     "deco-sites/andercamps/matchers/platform.ts": $$$$$$$0,
+  },
+  "flags": {
+    "deco-sites/andercamps/flags/multivariate/Messages.ts": $$$$$$$$0,
+    "deco-sites/andercamps/flags/multivariate/ProductCardFlag.ts": $$$$$$$$1,
   },
   "actions": {
     "deco-sites/andercamps/actions/PostVotes.ts": $$$$$$$$$0,

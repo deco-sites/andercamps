@@ -1,10 +1,11 @@
 import { Product } from "apps/commerce/types.ts";
 import ProductCard from "deco-sites/andercamps/components/Conexões Culturais/ProductCard.tsx";
 import HorizontalSkeleton from "deco-sites/andercamps/components/Conex%C3%B5es%20Culturais/HorizontalSkeleton.tsx";
+import { ProductFlagProps } from "deco-sites/andercamps/flags/multivariate/ProductCardFlag.ts";
 
 export interface Products {
   errorFallback?: boolean;
-  items: Product[] | null;
+  items: ProductFlagProps;
 }
 
 export function ErrorFallback({ error }: { error?: Error }) {

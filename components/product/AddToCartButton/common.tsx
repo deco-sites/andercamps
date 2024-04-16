@@ -3,6 +3,7 @@ import { useState } from "preact/hooks";
 import Button from "../../../components/ui/Button.tsx";
 import { sendEvent } from "../../../sdk/analytics.tsx";
 import { useUI } from "../../../sdk/useUI.ts";
+import { toast } from "toastify";
 
 export interface Props {
   /** @description: sku name */
@@ -30,6 +31,7 @@ const useAddToCart = ({ eventParams, onAddItem }: Props) => {
 
       displayCart.value = true;
     } finally {
+      toast("Adicionado!");
       setLoading(false);
     }
   };

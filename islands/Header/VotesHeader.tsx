@@ -24,7 +24,7 @@ export default function VotesHeader({ totalVotes }: Props) {
     <>
       <div className="flex items-center justify-between gap-3">
         <Icon id="Friends" size={32} />
-        <span id="total">{votes}</span>
+        <span className="total-votes">{votes}</span>
       </div>
     </>
   );

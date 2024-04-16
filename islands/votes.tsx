@@ -1,4 +1,5 @@
 import Icons from "deco-sites/andercamps/components/ui/Icon.tsx";
+import { sendEvent } from "deco-sites/andercamps/sdk/analytics.tsx";
 import { invoke } from "deco-sites/andercamps/runtime.ts";
 import { useSignal } from "@preact/signals";
 import { toast } from "toastify";
@@ -27,6 +28,14 @@ export default function Votes({ productId }: Props) {
             vote.textContent = String(total);
           });
         }
+
+        // Eventos do Analytics:
+        sendEvent({
+          name: "post_score",
+          params: {
+            score: total,
+          },
+        });
       });
   }
 
